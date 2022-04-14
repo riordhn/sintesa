@@ -31,28 +31,47 @@ class Evaluation extends Model
         return date_format(date_create($value), 'd M Y H:i');
     }
     
-    public function getStudyCertificateAttribute($value){
-        return url($value);
-    }
+    // public function getStudyCertificateAttribute($value){
+    //     if(!empty($value))
+    //         return url($value);
+    //     else
+    //         return null;
+    // }
 
-    public function getStudySemesterResultAttribute($value){
-        return url($value);
-    }
+    // public function getStudySemesterResultAttribute($value){
+    //     if(!empty($value))
+    //         return url($value);
+    //     else
+    //         return null;
+    // }
 
-    public function getStudyPresencetAttribute($value){
-        return url($value);
-    }
-    public function getProposalFileAttribute($value){
-        return url($value);
-    }
+    // public function getStudyPresencetAttribute($value){
+    //     if(!empty($value))
+    //         return url($value);
+    //     else
+    //         return null;
+    // }
 
-    public function getSimilarityFileAttribute($value){
-        return url($value);
-    }
+    // public function getProposalFileAttribute($value){
+    //     if(!empty($value))
+    //         return url($value);
+    //     else
+    //         return null;
+    // }
 
-    public function getEndTestFileAttribute($value){
-        return url($value);
-    }
+    // public function getSimilarityFileAttribute($value){
+    //     if(!empty($value))
+    //         return url($value);
+    //     else
+    //         return null;
+    // }
+
+    // public function getEndTestFileAttribute($value){
+    //     if(!empty($value))
+    //         return url($value);
+    //     else
+    //         return null;
+    // }
 
     public function scopeByUser($query, $user_id){
         return $query->where('NIK', $user_id);
