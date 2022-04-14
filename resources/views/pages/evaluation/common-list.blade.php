@@ -160,7 +160,7 @@
             { data: 'has_proposal_test' },
             { data: 'proposal_date' },
             {
-                data: 'proposal_proof',
+                data: 'proposal_file',
                 searchable: false,
                 orderable: false,
                 render: function(data) {
@@ -179,7 +179,7 @@
             { data: 'evaluation_date' },
             { data: 'percentage_evaluation' },
             {
-                data: 'similarity_proof',
+                data: 'similarity_file',
                 searchable: false,
                 orderable: false,
                 render: function(data) {
@@ -197,7 +197,7 @@
             { data: 'percentage_end_test' },
             { data: 'end_test_date' },
             {
-                data: 'end_test_proof',
+                data: 'end_test_file',
                 searchable: false,
                 orderable: false,
                 render: function(data) {
@@ -213,22 +213,6 @@
                 }
             },
             { data: 'percentage_pass_academic' },
-            // {
-            //     data: 'paper_url',
-            //     searchable: false,
-            //     orderable: false,
-            //     render: function(data) {
-            //         let html = ``;
-
-            //         if(data){
-            //             html += `<a href="` + data +`" target="_blank">` +
-            //                 `    Download Paper` +
-            //                 `</a>`;
-            //         }
-                    
-            //         return html;
-            //     }
-            // },
             {
                 data: 'action',
                 searchable: false,

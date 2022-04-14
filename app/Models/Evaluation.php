@@ -42,15 +42,15 @@ class Evaluation extends Model
     public function getStudyPresencetAttribute($value){
         return url($value);
     }
-    public function getProposalProofAttribute($value){
+    public function getProposalFileAttribute($value){
         return url($value);
     }
 
-    public function getSimilarityProofAttribute($value){
+    public function getSimilarityFileAttribute($value){
         return url($value);
     }
 
-    public function getEndTestProofAttribute($value){
+    public function getEndTestFileAttribute($value){
         return url($value);
     }
 

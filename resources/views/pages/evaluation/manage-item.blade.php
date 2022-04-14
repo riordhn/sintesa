@@ -268,11 +268,11 @@
                 </div>
                 <div class="field-body">
                     <div class="box">
-                        @if(!empty($item) && !empty($item->proposal_proof))
-                        <a href="{{$item->proposal_proof}}?v={{time()}}" target="_blank">Download Bukti Ujian Proposal</a>
-                        <input class="input" type="file" name="proposal_proof">
+                        @if(!empty($item) && !empty($item->proposal_file))
+                        <a href="{{$item->proposal_file}}?v={{time()}}" target="_blank">Download Bukti Ujian Proposal</a>
+                        <input class="input" type="file" name="proposal_file">
                         @else
-                        <input class="input" type="file" name="proposal_proof">
+                        <input class="input" type="file" name="proposal_file">
                         @endif
                     </div>
                 </div>
@@ -326,11 +326,11 @@
                 </div>
                 <div class="field-body">
                     <div class="box">
-                        @if(!empty($item) && !empty($item->similarity_proof))
-                        <a href="{{$item->similarity_proof}}?v={{time()}}" target="_blank">Download Bukti Uji Similaritas</a>
-                        <input class="input" type="file" name="similarity_proof">
+                        @if(!empty($item) && !empty($item->similarity_file))
+                        <a href="{{$item->similarity_file}}?v={{time()}}" target="_blank">Download Bukti Uji Similaritas</a>
+                        <input class="input" type="file" name="similarity_file">
                         @else
-                        <input class="input" type="file" name="similarity_proof">
+                        <input class="input" type="file" name="similarity_file">
                         @endif
                     </div>
                 </div>
@@ -341,11 +341,11 @@
                 </div>
                 <div class="field-body">
                     <div class="box">
-                        @if(!empty($item) && !empty($item->similarity_proof))
-                        <a href="{{$item->similarity_proof}}?v={{time()}}" target="_blank">Download Bukti Uji Similaritas</a>
-                        <input class="input" type="file" name="similarity_proof">
+                        @if(!empty($item) && !empty($item->similarity_file))
+                        <a href="{{$item->similarity_file}}?v={{time()}}" target="_blank">Download Bukti Uji Similaritas</a>
+                        <input class="input" type="file" name="similarity_file">
                         @else
-                        <input class="input" type="file" name="similarity_proof">
+                        <input class="input" type="file" name="similarity_file">
                         @endif
                     </div>
                 </div>
@@ -380,11 +380,11 @@
                 </div>
                 <div class="field-body">
                     <div class="box">
-                        @if(!empty($item) && !empty($item->end_test_proof))
-                        <a href="{{$item->end_test_proof}}?v={{time()}}" target="_blank">Download Bukti Ujian Akhir</a>
-                        <input class="input" type="file" name="end_test_proof">
+                        @if(!empty($item) && !empty($item->end_test_file))
+                        <a href="{{$item->end_test_file}}?v={{time()}}" target="_blank">Download Bukti Ujian Akhir</a>
+                        <input class="input" type="file" name="end_test_file">
                         @else
-                        <input class="input" type="file" name="end_test_proof">
+                        <input class="input" type="file" name="end_test_file">
                         @endif
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Evaluation;
+use App\Models\Login;
 use Yajra\Datatables\Datatables;
 
 use Validator;
@@ -116,47 +117,47 @@ class EvaluationController extends Controller
         $item->has_proposal_test = $request->has_proposal_test;
         $item->proposal_date = $request->proposal_date;
 
-        if($request->hasFile('proposal_proof')){
-            $proposal_proof = $request->file('proposal_proof');
+        if($request->hasFile('proposal_file')){
+            $proposal_file = $request->file('proposal_file');
             
-            $filename = pathinfo($proposal_proof->getClientOriginalName(), PATHINFO_FILENAME);
-            $ext = pathinfo($proposal_proof->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = pathinfo($proposal_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $ext = pathinfo($proposal_file->getClientOriginalName(), PATHINFO_EXTENSION);
     
             $filename_new = time().'_'.$filename.'.'.$ext;
        
-            $path = $proposal_proof->move(public_path('uploads/evaluation/proposal_proof'), $filename_new);
-            $item->proposal_proof = '/uploads/evaluation/proposal_proof/'.$filename_new;
+            $path = $proposal_file->move(public_path('uploads/evaluation/proposal_file'), $filename_new);
+            $item->proposal_file = '/uploads/evaluation/proposal_file/'.$filename_new;
         }
 
         $item->has_similarity_test = $request->has_similarity_test;
         $item->evaluation_date = $request->evaluation_date;
         $item->percentage_evaluation = $request->percentage_evaluation;
 
-        if($request->hasFile('similarity_proof')){
-            $similarity_proof = $request->file('similarity_proof');
+        if($request->hasFile('similarity_file')){
+            $similarity_file = $request->file('similarity_file');
             
-            $filename = pathinfo($similarity_proof->getClientOriginalName(), PATHINFO_FILENAME);
-            $ext = pathinfo($similarity_proof->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = pathinfo($similarity_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $ext = pathinfo($similarity_file->getClientOriginalName(), PATHINFO_EXTENSION);
     
             $filename_new = time().'_'.$filename.'.'.$ext;
        
-            $path = $similarity_proof->move(public_path('uploads/evaluation/similarity_proof'), $filename_new);
-            $item->similarity_proof = '/uploads/evaluation/similarity_proof/'.$filename_new;
+            $path = $similarity_file->move(public_path('uploads/evaluation/similarity_file'), $filename_new);
+            $item->similarity_file = '/uploads/evaluation/similarity_file/'.$filename_new;
         }
 
         $item->percentage_end_test = $request->percentage_end_test;
         $item->end_test_date = $request->end_test_date;
 
-        if($request->hasFile('end_test_proof')){
-            $end_test_proof = $request->file('end_test_proof');
+        if($request->hasFile('end_test_file')){
+            $end_test_file = $request->file('end_test_file');
             
-            $filename = pathinfo($end_test_proof->getClientOriginalName(), PATHINFO_FILENAME);
-            $ext = pathinfo($end_test_proof->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = pathinfo($end_test_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $ext = pathinfo($end_test_file->getClientOriginalName(), PATHINFO_EXTENSION);
     
             $filename_new = time().'_'.$filename.'.'.$ext;
        
-            $path = $end_test_proof->move(public_path('uploads/evaluation/end_test_proof'), $filename_new);
-            $item->end_test_proof = '/uploads/evaluation/end_test_proof/'.$filename_new;
+            $path = $end_test_file->move(public_path('uploads/evaluation/end_test_file'), $filename_new);
+            $item->end_test_file = '/uploads/evaluation/end_test_file/'.$filename_new;
         }
         $item->percentage_pass_academic = $request->percentage_pass_academic;
 
@@ -285,47 +286,47 @@ class EvaluationController extends Controller
         $item->has_proposal_test = $request->has_proposal_test;
         $item->proposal_date = $request->proposal_date;
 
-        if($request->hasFile('proposal_proof')){
-            $proposal_proof = $request->file('proposal_proof');
+        if($request->hasFile('proposal_file')){
+            $proposal_file = $request->file('proposal_file');
             
-            $filename = pathinfo($proposal_proof->getClientOriginalName(), PATHINFO_FILENAME);
-            $ext = pathinfo($proposal_proof->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = pathinfo($proposal_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $ext = pathinfo($proposal_file->getClientOriginalName(), PATHINFO_EXTENSION);
     
             $filename_new = time().'_'.$filename.'.'.$ext;
        
-            $path = $proposal_proof->move(public_path('uploads/evaluation/proposal_proof'), $filename_new);
-            $item->proposal_proof = '/uploads/evaluation/proposal_proof/'.$filename_new;
+            $path = $proposal_file->move(public_path('uploads/evaluation/proposal_file'), $filename_new);
+            $item->proposal_file = '/uploads/evaluation/proposal_file/'.$filename_new;
         }
 
         $item->has_similarity_test = $request->has_similarity_test;
         $item->evaluation_date = $request->evaluation_date;
         $item->percentage_evaluation = $request->percentage_evaluation;
 
-        if($request->hasFile('similarity_proof')){
-            $similarity_proof = $request->file('similarity_proof');
+        if($request->hasFile('similarity_file')){
+            $similarity_file = $request->file('similarity_file');
             
-            $filename = pathinfo($similarity_proof->getClientOriginalName(), PATHINFO_FILENAME);
-            $ext = pathinfo($similarity_proof->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = pathinfo($similarity_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $ext = pathinfo($similarity_file->getClientOriginalName(), PATHINFO_EXTENSION);
     
             $filename_new = time().'_'.$filename.'.'.$ext;
        
-            $path = $similarity_proof->move(public_path('uploads/evaluation/similarity_proof'), $filename_new);
-            $item->similarity_proof = '/uploads/evaluation/similarity_proof/'.$filename_new;
+            $path = $similarity_file->move(public_path('uploads/evaluation/similarity_file'), $filename_new);
+            $item->similarity_file = '/uploads/evaluation/similarity_file/'.$filename_new;
         }
 
         $item->percentage_end_test = $request->percentage_end_test;
         $item->end_test_date = $request->end_test_date;
 
-        if($request->hasFile('end_test_proof')){
-            $end_test_proof = $request->file('end_test_proof');
+        if($request->hasFile('end_test_file')){
+            $end_test_file = $request->file('end_test_file');
             
-            $filename = pathinfo($end_test_proof->getClientOriginalName(), PATHINFO_FILENAME);
-            $ext = pathinfo($end_test_proof->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filename = pathinfo($end_test_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $ext = pathinfo($end_test_file->getClientOriginalName(), PATHINFO_EXTENSION);
     
             $filename_new = time().'_'.$filename.'.'.$ext;
        
-            $path = $end_test_proof->move(public_path('uploads/evaluation/end_test_proof'), $filename_new);
-            $item->end_test_proof = '/uploads/evaluation/end_test_proof/'.$filename_new;
+            $path = $end_test_file->move(public_path('uploads/evaluation/end_test_file'), $filename_new);
+            $item->end_test_file = '/uploads/evaluation/end_test_file/'.$filename_new;
         }
         $item->percentage_pass_academic = $request->percentage_pass_academic;
         $item->save();
