@@ -61,7 +61,7 @@ class EvaluationController extends Controller
         }
         $item = new Evaluation;
 
-        $item->submission_code = 'EV-'.time();
+        $item->evaluation_code = 'EV-'.time();
         $item->NIK = auth_data()->NIK;
         $item->name = $request->name;
         $item->division = $request->division;
