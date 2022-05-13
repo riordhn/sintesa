@@ -176,7 +176,7 @@
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Persentase Penulisan TA<small class="has-text-danger">*</small></label>
+                    <label class="label">Persentase Penulisan Tugas Akhir<small class="has-text-danger">*</small></label>
                 </div>
                 <div class="field-body">
                     <div class="field">
@@ -193,14 +193,15 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <textarea class="textarea" name="follow_up_ta" placeholder="..." rows="4">{{!empty($item)? $item->follow_up_ta : ''}}</textarea>
+                            <textarea class="textarea" name="follow_up_ta" placeholder="..." rows="4" oninput="inputTextArea()">{{!empty($item)? $item->follow_up_ta : ''}}</textarea>
+                            <small class="has-text-danger" id="word_count">Minimal karakter 1/150</small>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Unggah KHS<small class="has-text-danger">*</small></label>
+                    <label class="label">Unggah KHS</label>
                 </div>
                 <div class="field-body">
                     <div class="box">
@@ -208,7 +209,7 @@
                         <a href="{{$item->study_semester_result}}?v={{time()}}" target="_blank">Download KHS</a>
                         <input class="input" type="file" name="study_semester_result">
                         @else
-                        <input class="input" type="file" required="" name="study_semester_result">
+                        <input class="input" type="file" name="study_semester_result">
                         @endif
                     </div>
                 </div>
@@ -233,7 +234,7 @@
             <p class="title is-5"><u>Ujian Akhir</u></p>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Ujian Akhir<small class="has-text-danger">*</small></label>
+                    <label class="label">Ujian Proposal<small class="has-text-danger">*</small></label>
                 </div>
                 <div class="field-body">
                     <div class="field">
@@ -252,12 +253,12 @@
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Tanggal Ujian Proposal</label>
+                    <label class="label">Tanggal Ujian Proposal/Rencana Ujian Proposal<small class="has-text-danger">*</small></label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="date" name="proposal_date" value="{{!empty($item)? $item->proposal_date : ''}}">
+                            <input class="input" type="date" name="proposal_date" required="" value="{{!empty($item)? $item->proposal_date : ''}}">
                         </p>
                     </div>
                 </div>
@@ -279,7 +280,7 @@
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Uji Similaritas</label>
+                    <label class="label">Uji Similaritas<small class="has-text-danger">*</small></label>
                 </div>
                 <div class="field-body">
                     <div class="field">
@@ -298,12 +299,12 @@
             </div>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Tanggal Penilaian</label>
+                    <label class="label">Tanggal Uji Similaritas/Rencana Uji Similaritas<small class="has-text-danger">*</small></label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="date" name="evaluation_date" value="{{!empty($item)? $item->evaluation_date : ''}}">
+                            <input class="input" type="date" name="evaluation_date" required value="{{!empty($item)? $item->evaluation_date : ''}}">
                         </p>
                     </div>
                 </div>
@@ -335,41 +336,15 @@
                     </div>
                 </div>
             </div>
+            
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label">Unggah Bukti Uji Similaritas</label>
-                </div>
-                <div class="field-body">
-                    <div class="box">
-                        @if(!empty($item) && !empty($item->similarity_file))
-                        <a href="{{$item->similarity_file}}?v={{time()}}" target="_blank">Download Bukti Uji Similaritas</a>
-                        <input class="input" type="file" name="similarity_file">
-                        @else
-                        <input class="input" type="file" name="similarity_file">
-                        @endif
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Persentase Ujian Akhir<small class="has-text-danger">*</small></label>
+                    <label class="label">Tanggal Ujian Akhir/Rencana Ujian Akhir<small class="has-text-danger">*</small></label>
                 </div>
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="number" required="" name="percentage_end_test" value="{{!empty($item)? $item->percentage_end_test : ''}}">
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Tanggal Ujian Akhir</label>
-                </div>
-                <div class="field-body">
-                    <div class="field">
-                        <p class="control">
-                            <input class="input" type="date" name="end_test_date" value="{{!empty($item)? $item->end_test_date : ''}}">
+                            <input class="input" type="date" name="end_test_date" required value="{{!empty($item)? $item->end_test_date : ''}}">
                         </p>
                     </div>
                 </div>
@@ -397,6 +372,18 @@
                     <div class="field">
                         <p class="control">
                             <input class="input" type="number" required="" name="percentage_pass_academic" value="{{!empty($item)? $item->percentage_pass_academic : ''}}">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Kendala selama Studi</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control">
+                            <textarea class="textarea" name="study_problem" placeholder="..." rows="4">{{!empty($item)? $item->study_problem : ''}}</textarea>
                         </p>
                     </div>
                 </div>
@@ -438,14 +425,26 @@
     }
 
     function inputTextArea(){
-        var str = $('textarea[name=abstract]').val();
+        var str = $('textarea[name=follow_up_ta]').val();
 
         str = str.replace(/(^\s*)|(\s*$)/gi,"");
         str = str.replace(/[ ]{2,}/gi," ");
         str = str.replace(/\n /,"\n");
         var str_count = str.split(' ').length;
 
-        $('#word_count').html(`Words Count ${str_count}/2500`);
+        $('#word_count').html(`Minimal kata ${str_count}/150`);
+
+        if(str_count >= 150){
+            if($('#word_count').hasClass('has-text-danger')){
+                $('#word_count').removeClass('has-text-danger');
+                $('#word_count').addClass('has-text-success');
+            }
+        }else{
+            if($('#word_count').hasClass('has-text-success')){
+                $('#word_count').removeClass('has-text-success');
+                $('#word_count').addClass('has-text-danger');
+            }
+        }
     }
 
     $('#form-manage-item').validate({

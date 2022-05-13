@@ -145,7 +145,6 @@ class EvaluationController extends Controller
             $item->similarity_file = '/uploads/evaluation/similarity_file/'.$filename_new;
         }
 
-        $item->percentage_end_test = $request->percentage_end_test;
         $item->end_test_date = $request->end_test_date;
 
         if($request->hasFile('end_test_file')){
@@ -160,6 +159,7 @@ class EvaluationController extends Controller
             $item->end_test_file = '/uploads/evaluation/end_test_file/'.$filename_new;
         }
         $item->percentage_pass_academic = $request->percentage_pass_academic;
+        $item->study_problem = $request->study_problem;
 
         $item->save();
 
@@ -314,7 +314,6 @@ class EvaluationController extends Controller
             $item->similarity_file = '/uploads/evaluation/similarity_file/'.$filename_new;
         }
 
-        $item->percentage_end_test = $request->percentage_end_test;
         $item->end_test_date = $request->end_test_date;
 
         if($request->hasFile('end_test_file')){
@@ -329,6 +328,7 @@ class EvaluationController extends Controller
             $item->end_test_file = '/uploads/evaluation/end_test_file/'.$filename_new;
         }
         $item->percentage_pass_academic = $request->percentage_pass_academic;
+        $item->study_problem = $request->study_problem;
         $item->save();
 
         return success_response('Sukses merevisi evaluasi');

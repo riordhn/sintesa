@@ -60,10 +60,11 @@
                         <th>Tanggal Penilaian</th>
                         <th>Hasil Penilaian</th>
                         <th>Bukti Uji Similaritas</th>
-                        <th>Ujian Akhir</th>
+
                         <th>Tanggal Ujian Akhir</th>
                         <th>Bukti Ujian Akhir</th>
                         <th>Progress Kelulusan (%)</th>
+                        <th>Kendala Selama Studi</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -194,7 +195,6 @@
                     return html;
                 }
             },
-            { data: 'percentage_end_test' },
             { data: 'end_test_date' },
             {
                 data: 'end_test_file',
@@ -219,13 +219,17 @@
                 orderable: false,
                 render: function(data) {
                     let html = ``;
-
+                    
                     html = `<button class="button is-small is-table is-info button-modal modal-button" data-target="#modal-manage-item" type="button" onclick="loadContent('evaluation/` + data.id + `/edit', 'modal-manage-item-content')">` +
-                            `    <span>Revisi</span>` +
-                            `</button>`;
-
+                    `    <span>Revisi</span>` +
+                    `</button>`;
+                    
                     return html;
                 }
+            },
+            { data: 'study_problem' 
+                searchable: false,
+                orderable: false
             },
 
         ],
