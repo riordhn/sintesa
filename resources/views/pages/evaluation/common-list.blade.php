@@ -213,6 +213,10 @@
                 }
             },
             { data: 'percentage_pass_academic' },
+            { data: 'study_problem',
+                searchable: false,
+                orderable: false
+            },
             {
                 data: 'action',
                 searchable: false,
@@ -227,11 +231,6 @@
                     return html;
                 }
             },
-            { data: 'study_problem' 
-                searchable: false,
-                orderable: false
-            },
-
         ],
         order: [
             [1, 'desc']
