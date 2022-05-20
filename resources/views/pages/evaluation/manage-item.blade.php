@@ -20,6 +20,12 @@
             <li class="steps-segment is-step-3">
                 <span class="steps-marker">3</span>
             </li>
+            <li class="steps-segment is-step-4">
+                <span class="steps-marker">4</span>
+            </li>
+            <li class="steps-segment is-step-5">
+                <span class="steps-marker">5</span>
+            </li>
         </ul>
         <div id="steps-1" class="is-steps-content">
             <p class="title is-5"><u>Informasi Studi</u></p>
@@ -54,7 +60,7 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control">
-                            <select name="stage">
+                            <select class="input" name="stage">
                                 <option {{(!empty($item) && $item->stage == 'S1')? 'selected' : '' }} value="S1">S1</option>
                                 <option {{(!empty($item) && $item->stage == 'S2')? 'selected' : '' }} value="S2">S2</option>
                                 <option {{(!empty($item) && $item->stage == 'S3')? 'selected' : '' }} value="S3">S3</option>
@@ -231,6 +237,217 @@
             </div>
         </div>
         <div id="steps-3" class="is-steps-content is-hidden">
+            <p class="title is-5"><u>TOEFL</u></p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Status TOEFL<small class="has-text-danger">*</small></label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="is_toefl" onclick="onChangeRadioToefl()" {{(!empty($item) && empty($item->toefl->toefl_plan))? 'checked' : '' }} value="1">
+                                <b>Sudah</b>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="is_toefl" onclick="onChangeRadioToefl()" {{(!empty($item) && !empty($item->toefl->toefl_plan))? 'checked' : '' }} value="2">
+                                <b>Belum</b>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="is-toefl-done" class="{{!empty($item)? empty($item->toefl->toefl_plan)? '' : 'is-hidden' : 'is-hidden'}}">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Nilai</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="number" name="toefl_value" value="{{!empty($item)? $item->toefl->toefl_value : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Tanggal Tes<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="date" name="toefl_date" required="" value="{{!empty($item)? $item->toefl->toefl_date : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Berlaku sampai dengan<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="date" name="toefl_expired_date" required="" value="{{!empty($item)? $item->toefl->toefl_expired_date : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Badan Penyelenggara<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="text" name="toefl_by" required="" value="{{!empty($item)? $item->toefl->toefl_by : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Unggah Bukti Sertifikat<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="box">
+                            @if(!empty($item) && !empty($item->toefl->toefl_file))
+                            <a href="{{$item->toefl->toefl_file}}?v={{time()}}" target="_blank">Download KHS</a>
+                            <input class="input" type="file" name="toefl_file">
+                            @else
+                            <input class="input" type="file" name="toefl_file">
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="is-toefl-not-done" class="{{!empty($item)? !empty($item->toefl->toefl_plan)? '' : 'is-hidden' : 'is-hidden'}}">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Rencana TOEFL<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="date" name="toefl_plan" required="" value="{{!empty($item)? $item->toefl->toefl_plan : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="steps-4" class="is-steps-content is-hidden">
+            <p class="title is-5"><u>Publikasi</u></p>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Status Publikasi<small class="has-text-danger">*</small></label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="is_publicity" onclick="onChangeRadioPublicity()" {{(!empty($item) && empty($item->publicity->publicity_plan))? 'checked' : '' }} value="1">
+                                <b>Sudah</b>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="is_publicity" onclick="onChangeRadioPublicity()" {{(!empty($item) && !empty($item->publicity->publicity_plan))? 'checked' : '' }} value="2">
+                                <b>Belum</b>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="is-publicity-done" class="{{!empty($item)? empty($item->publicity->publicity_plan)? '' : 'is-hidden' : 'is-hidden'}}">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Kategori<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <select class="input" name="publicity_category">
+                                    <option>Pilih</option>
+                                    <option {{(!empty($item) && $item->publicity->publicity_category == 'Jurnal')? 'selected' : '' }} value="Jurnal">Jurnal</option>
+                                    <option {{(!empty($item) && $item->publicity->publicity_category == 'Prosedings')? 'selected' : '' }} value="Prosedings">Prosedings</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Nama Jurnal / Forum Ilmiah / Seminar<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="text" name="journal_name" required="" value="{{!empty($item)? $item->journal_name : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Progres Publikasi<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <select class="input" name="publicity_progress">
+                                    <option>Pilih</option>
+                                    <option {{(!empty($item) && $item->publicity->publicity_progress == 'Accepted')? 'selected' : '' }} value="Accepted">Accepted</option>
+                                    <option {{(!empty($item) && $item->publicity->publicity_progress == 'Publish')? 'selected' : '' }} value="Publish">Publish</option>
+                                    <option {{(!empty($item) && $item->publicity->publicity_progress == 'Submit')? 'selected' : '' }} value="Submit">Submit</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Tanggal Submit / Accepted / Publish / Penyelenggaraan<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="date" name="publicity_date" required="" value="{{!empty($item)? $item->publicity->publicity_date : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Unggah Bukti Sertifikat<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="box">
+                            @if(!empty($item) && !empty($item->publicity->publicity_file))
+                            <a href="{{$item->publicity->publicity_file}}?v={{time()}}" target="_blank">Download KHS</a>
+                            <input class="input" type="file" name="publicity_file">
+                            @else
+                            <input class="input" type="file" name="publicity_file">
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="is-publicity-not-done" class="{{!empty($item)? !empty($item->publicity->publicity_plan)? '' : 'is-hidden' : 'is-hidden'}}">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Rencana Publikasi<small class="has-text-danger">*</small></label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control">
+                                <input class="input" type="date" name="publicity_plan" required="" value="{{!empty($item)? $item->publicity->publicity_plan : ''}}">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="steps-5" class="is-steps-content is-hidden">
             <p class="title is-5"><u>Ujian Akhir</u></p>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
@@ -406,6 +623,26 @@
 </form>
 
 <script>
+    function onChangeRadioToefl(){
+        if($('input[name="is_toefl"]:checked').val() == 1){
+            $('#is-toefl-done').removeClass('is-hidden'); 
+            $('#is-toefl-not-done').addClass('is-hidden');
+        }else{
+            $('#is-toefl-done').addClass('is-hidden'); 
+            $('#is-toefl-not-done').removeClass('is-hidden');
+        }
+    }
+    function onChangeRadioPublicity(){
+        if($('input[name="is_publicity"]:checked').val() == 1){
+            $('#is-publicity-done').removeClass('is-hidden'); 
+            $('#is-publicity-not-done').addClass('is-hidden');
+        }else{
+            $('#is-publicity-done').addClass('is-hidden'); 
+            $('#is-publicity-not-done').removeClass('is-hidden');
+        }
+    }
+</script>
+<script>
     function changeInputStatus(){
         var num = $('input[name=step_number]').val();
         var next_num = parseInt(num) + 1;
@@ -416,7 +653,7 @@
         $('.steps-segment').removeClass('is-active');
         $('.steps-segment.is-step-' + next_num).addClass('is-active');
 
-        if(num == 2){
+        if(num == 4){
             $('#btn_next').addClass('is-hidden');
             $('#btn_submit').removeClass('is-hidden');
         }else{

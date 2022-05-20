@@ -27,6 +27,14 @@ class Evaluation extends Model
         'updated_by',
     ];
 
+    public function toefl(){
+        return $this->hasOne(EvaluationTOEFL::class, 'evaluation_id');
+    }
+
+    public function publicity(){
+        return $this->hasOne(EvaluationPublicity::class, 'evaluation_id');
+    }
+
     public function getCreatedAtAttribute($value){
         return date_format(date_create($value), 'd M Y H:i');
     }

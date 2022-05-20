@@ -5,7 +5,7 @@
 </div>
 <div id="modal-manage-item" class="modal">
     <div class="modal-background"></div>
-    <div class="modal-content" id="modal-manage-item-content" style="width: 85%;">
+    <div class="modal-content" id="modal-manage-item-content" style="min-width: 810px;">
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
